@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="trip">
+            <h2><span jhiTranslate="myTripApp.trip.detail.title">Trip</span> {{ trip.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="myTripApp.trip.depPlace">Dep Place</span></dt>
+                <dd>
+                    <span>{{ trip.depPlace }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.depDate">Dep Date</span></dt>
+                <dd>
+                    <span>{{ trip.depDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.depTime">Dep Time</span></dt>
+                <dd>
+                    <span>{{ trip.depTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.depUtcZone">Dep Utc Zone</span></dt>
+                <dd>
+                    <span>{{ trip.depUtcZone }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.arrPlace">Arr Place</span></dt>
+                <dd>
+                    <span>{{ trip.arrPlace }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.arrDate">Arr Date</span></dt>
+                <dd>
+                    <span>{{ trip.arrDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.arrTime">Arr Time</span></dt>
+                <dd>
+                    <span>{{ trip.arrTime }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.arrUtcZone">Arr Utc Zone</span></dt>
+                <dd>
+                    <span>{{ trip.arrUtcZone }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.cabinCat">Cabin Cat</span></dt>
+                <dd>
+                    <span>{{ trip.cabinCat }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.marketingFlightId">Marketing Flight Id</span></dt>
+                <dd>
+                    <span>{{ trip.marketingFlightId }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.operatorFlightId">Operator Flight Id</span></dt>
+                <dd>
+                    <span>{{ trip.operatorFlightId }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.marketingAirline">Marketing Airline</span></dt>
+                <dd>
+                    <span>{{ trip.marketingAirline }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.operatingAirline">Operating Airline</span></dt>
+                <dd>
+                    <span>{{ trip.operatingAirline }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.transportation">Transportation</span></dt>
+                <dd>
+                    <span>{{ trip.transportation }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.bookingClass">Booking Class</span></dt>
+                <dd>
+                    <span>{{ trip.bookingClass }}</span>
+                </dd>
+                <dt><span jhiTranslate="myTripApp.trip.cabinClass">Cabin Class</span></dt>
+                <dd>
+                    <span>{{ trip.cabinClass }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/trip', trip.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,194 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-trip-heading" jhiTranslate="myTripApp.trip.home.createOrEditLabel">Create or edit a Trip</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.depPlace" for="field_depPlace">Dep Place</label>
+                    <input type="text" class="form-control" name="depPlace" id="field_depPlace"
+                           formControlName="depPlace"/>
+                    <div *ngIf="editForm.get('depPlace')!.invalid && (editForm.get('depPlace')!.dirty || editForm.get('depPlace')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('depPlace')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.depDate" for="field_depDate">Dep Date</label>
+                    <div class="d-flex">
+                        <input id="field_depDate" type="datetime-local" class="form-control" name="depDate" formControlName="depDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('depDate')!.invalid && (editForm.get('depDate')!.dirty || editForm.get('depDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('depDate')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('depDate')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.depTime" for="field_depTime">Dep Time</label>
+                    <input type="number" class="form-control" name="depTime" id="field_depTime"
+                           formControlName="depTime"/>
+                    <div *ngIf="editForm.get('depTime')!.invalid && (editForm.get('depTime')!.dirty || editForm.get('depTime')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('depTime')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('depTime')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.depUtcZone" for="field_depUtcZone">Dep Utc Zone</label>
+                    <input type="text" class="form-control" name="depUtcZone" id="field_depUtcZone"
+                           formControlName="depUtcZone"/>
+                    <div *ngIf="editForm.get('depUtcZone')!.invalid && (editForm.get('depUtcZone')!.dirty || editForm.get('depUtcZone')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('depUtcZone')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.arrPlace" for="field_arrPlace">Arr Place</label>
+                    <input type="text" class="form-control" name="arrPlace" id="field_arrPlace"
+                           formControlName="arrPlace"/>
+                    <div *ngIf="editForm.get('arrPlace')!.invalid && (editForm.get('arrPlace')!.dirty || editForm.get('arrPlace')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('arrPlace')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.arrDate" for="field_arrDate">Arr Date</label>
+                    <div class="d-flex">
+                        <input id="field_arrDate" type="datetime-local" class="form-control" name="arrDate" formControlName="arrDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('arrDate')!.invalid && (editForm.get('arrDate')!.dirty || editForm.get('arrDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('arrDate')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('arrDate')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.arrTime" for="field_arrTime">Arr Time</label>
+                    <input type="number" class="form-control" name="arrTime" id="field_arrTime"
+                           formControlName="arrTime"/>
+                    <div *ngIf="editForm.get('arrTime')!.invalid && (editForm.get('arrTime')!.dirty || editForm.get('arrTime')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('arrTime')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('arrTime')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.arrUtcZone" for="field_arrUtcZone">Arr Utc Zone</label>
+                    <input type="text" class="form-control" name="arrUtcZone" id="field_arrUtcZone"
+                           formControlName="arrUtcZone"/>
+                    <div *ngIf="editForm.get('arrUtcZone')!.invalid && (editForm.get('arrUtcZone')!.dirty || editForm.get('arrUtcZone')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('arrUtcZone')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.cabinCat" for="field_cabinCat">Cabin Cat</label>
+                    <input type="text" class="form-control" name="cabinCat" id="field_cabinCat"
+                           formControlName="cabinCat"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.marketingFlightId" for="field_marketingFlightId">Marketing Flight Id</label>
+                    <input type="text" class="form-control" name="marketingFlightId" id="field_marketingFlightId"
+                           formControlName="marketingFlightId"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.operatorFlightId" for="field_operatorFlightId">Operator Flight Id</label>
+                    <input type="text" class="form-control" name="operatorFlightId" id="field_operatorFlightId"
+                           formControlName="operatorFlightId"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.marketingAirline" for="field_marketingAirline">Marketing Airline</label>
+                    <input type="text" class="form-control" name="marketingAirline" id="field_marketingAirline"
+                           formControlName="marketingAirline"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.operatingAirline" for="field_operatingAirline">Operating Airline</label>
+                    <input type="text" class="form-control" name="operatingAirline" id="field_operatingAirline"
+                           formControlName="operatingAirline"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.transportation" for="field_transportation">Transportation</label>
+                    <input type="text" class="form-control" name="transportation" id="field_transportation"
+                           formControlName="transportation"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.bookingClass" for="field_bookingClass">Booking Class</label>
+                    <input type="text" class="form-control" name="bookingClass" id="field_bookingClass"
+                           formControlName="bookingClass"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myTripApp.trip.cabinClass" for="field_cabinClass">Cabin Class</label>
+                    <input type="text" class="form-control" name="cabinClass" id="field_cabinClass"
+                           formControlName="cabinClass"/>
+                    <div *ngIf="editForm.get('cabinClass')!.invalid && (editForm.get('cabinClass')!.dirty || editForm.get('cabinClass')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cabinClass')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

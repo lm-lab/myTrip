@@ -1,0 +1,95 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="myTripApp.trip.home.title">Trips</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-trip" [routerLink]="['/trip/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="myTripApp.trip.home.createLabel">
+            Create a new Trip
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="trips?.length === 0">
+        <span jhiTranslate="myTripApp.trip.home.notFound">No trips found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="trips?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="depPlace"><span jhiTranslate="myTripApp.trip.depPlace">Dep Place</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="depDate"><span jhiTranslate="myTripApp.trip.depDate">Dep Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="depTime"><span jhiTranslate="myTripApp.trip.depTime">Dep Time</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="depUtcZone"><span jhiTranslate="myTripApp.trip.depUtcZone">Dep Utc Zone</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="arrPlace"><span jhiTranslate="myTripApp.trip.arrPlace">Arr Place</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="arrDate"><span jhiTranslate="myTripApp.trip.arrDate">Arr Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="arrTime"><span jhiTranslate="myTripApp.trip.arrTime">Arr Time</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="arrUtcZone"><span jhiTranslate="myTripApp.trip.arrUtcZone">Arr Utc Zone</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cabinCat"><span jhiTranslate="myTripApp.trip.cabinCat">Cabin Cat</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="marketingFlightId"><span jhiTranslate="myTripApp.trip.marketingFlightId">Marketing Flight Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="operatorFlightId"><span jhiTranslate="myTripApp.trip.operatorFlightId">Operator Flight Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="marketingAirline"><span jhiTranslate="myTripApp.trip.marketingAirline">Marketing Airline</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="operatingAirline"><span jhiTranslate="myTripApp.trip.operatingAirline">Operating Airline</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="transportation"><span jhiTranslate="myTripApp.trip.transportation">Transportation</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bookingClass"><span jhiTranslate="myTripApp.trip.bookingClass">Booking Class</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cabinClass"><span jhiTranslate="myTripApp.trip.cabinClass">Cabin Class</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.login"><span jhiTranslate="myTripApp.trip.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let trip of trips ;trackBy: trackId">
+                    <td><a [routerLink]="['/trip', trip.id, 'view']">{{ trip.id }}</a></td>
+                    <td>{{ trip.depPlace }}</td>
+                    <td>{{ trip.depDate | date:'medium' }}</td>
+                    <td>{{ trip.depTime }}</td>
+                    <td>{{ trip.depUtcZone }}</td>
+                    <td>{{ trip.arrPlace }}</td>
+                    <td>{{ trip.arrDate | date:'medium' }}</td>
+                    <td>{{ trip.arrTime }}</td>
+                    <td>{{ trip.arrUtcZone }}</td>
+                    <td>{{ trip.cabinCat }}</td>
+                    <td>{{ trip.marketingFlightId }}</td>
+                    <td>{{ trip.operatorFlightId }}</td>
+                    <td>{{ trip.marketingAirline }}</td>
+                    <td>{{ trip.operatingAirline }}</td>
+                    <td>{{ trip.transportation }}</td>
+                    <td>{{ trip.bookingClass }}</td>
+                    <td>{{ trip.cabinClass }}</td>
+                    <td>
+                        {{ trip.user?.login }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/trip', trip.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/trip', trip.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(trip)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

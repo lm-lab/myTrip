@@ -1,0 +1,45 @@
+{
+  "myTripApp": {
+    "trip": {
+      "home": {
+        "title": "Trips",
+        "createLabel": "CrÃ©er un nouveau Trip",
+        "createOrEditLabel": "CrÃ©er ou Ã©diter un Trip",
+        "notFound": "Aucun Trip trouvÃ©"
+      },
+      "created": "Un nouveau Trip a Ã©tÃ© crÃ©Ã© avec l'identifiant {{ param }}",
+      "updated": "Le Trip avec l'identifiant {{ param }} a Ã©tÃ© mis Ã  jour",
+      "deleted": "Le Trip avec l'identifiant {{ param }} a Ã©tÃ© supprimÃ©",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Trip {{ id }} ?"
+      },
+      "detail": {
+        "title": "Trip"
+      },
+      "depPlace": "Lieu",
+      "departurePlace": "Lieu du départ",
+      "departureDate": "Date de départ",
+      "arrivalPlace": "Lieu d'arrivé",
+      "arrivalDate": "Date d'arrivée",
+      "depDate": "Date",
+      "depTime": "Heure",
+      "depUtcZone": "Zone Utc",
+      "arrPlace": "Lieu",
+      "arrDate": "Date",
+      "arrTime": "Heure",
+      "arrUtcZone": "Zone Utc",
+      "cabinCat": "catégorie cabine",
+      "details": "Details",
+      "arrival": "Arrivée",
+      "departure": "Départ",
+      "marketingFlightId": "Vol Marketing Id",
+      "operatorFlightId": "Id du vol de l'opérateur",
+      "marketingAirline": "Marketing Airline",
+      "operatingAirline": "Compagnie aérienne en exploitation",
+      "transportation": "Transport",
+      "bookingClass": "Classe de réservation",
+      "cabinClass": "Classe de cabine",
+      "user": "User"
+    }
+  }
+}

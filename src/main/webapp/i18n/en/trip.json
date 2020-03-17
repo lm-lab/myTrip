@@ -1,0 +1,45 @@
+{
+  "myTripApp": {
+    "trip": {
+      "home": {
+        "title": "Trips",
+        "createLabel": "Create a new Trip",
+        "createOrEditLabel": "Create or edit a Trip",
+        "notFound": "No Trips found"
+      },
+      "created": "A new Trip is created with identifier {{ param }}",
+      "updated": "A Trip is updated with identifier {{ param }}",
+      "deleted": "A Trip is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Trip {{ id }}?"
+      },
+      "detail": {
+        "title": "Trip"
+      },
+      "depPlace": "Place",
+      "departurePlace": "Departure Place",
+      "departureDate": "Departure Date",
+      "arrivalPlace": "Arrival Place",
+      "arrivalDate": "Arrival Date",
+      "depDate": "Date",
+      "depTime": "Time",
+      "depUtcZone": "Utc Zone",
+      "arrPlace": "Place",
+      "arrDate": "Date",
+      "arrTime": "Time",
+      "arrUtcZone": "Utc Zone",
+      "cabinCat": "Cabin Category",
+      "details": "Details",
+      "arrival": "Arrival",
+      "departure": "Departure",
+      "marketingFlightId": "Marketing Flight Id",
+      "operatorFlightId": "Operator Flight Id",
+      "marketingAirline": "Marketing Airline",
+      "operatingAirline": "Operating Airline",
+      "transportation": "Transportation",
+      "bookingClass": "Booking Class",
+      "cabinClass": "Cabin Class",
+      "user": "User"
+    }
+  }
+}

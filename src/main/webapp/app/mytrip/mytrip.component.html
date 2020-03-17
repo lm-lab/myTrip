@@ -1,0 +1,216 @@
+<div class="row">
+    <div class="col-md-12">
+        <mat-sidenav-container>
+            <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                    <div>
+                        <jhi-alert-error></jhi-alert-error>
+                        <h2 jhiTranslate="myTripApp.trip.departure">Departure</h2>
+                        <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                            <label for="id" jhiTranslate="global.field.id">ID</label>
+                            <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.depPlace" for="field_depPlace">Departure Place</label>
+                            <input type="text" class="form-control" name="depPlace" id="field_depPlace" formControlName="depPlace" placeholder="Search for airport"/>
+                            <div *ngIf="editForm.get('depPlace')!.invalid && (editForm.get('depPlace')!.dirty || editForm.get('depPlace')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('depPlace')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.depDate" for="field_depDate">Dep Date</label>
+                            <div class="d-flex">
+                                <input id="field_depDate" type="datetime-local" class="form-control" name="depDate" formControlName="depDate" placeholder="YYYY-MM-DD HH:mm" />
+                            </div>
+                            <div *ngIf="editForm.get('depDate')!.invalid && (editForm.get('depDate')!.dirty || editForm.get('depDate')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('depDate')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                                <small class="form-text text-danger" [hidden]="!editForm.get('depDate')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.depTime" for="field_depTime">Dep Time</label>
+                            <input type="number" class="form-control" name="depTime" id="field_depTime" formControlName="depTime" />
+                            <div *ngIf="editForm.get('depTime')!.invalid && (editForm.get('depTime')!.dirty || editForm.get('depTime')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('depTime')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                                <small class="form-text text-danger" [hidden]="!editForm.get('depTime')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.depUtcZone" for="field_depUtcZone">Dep Utc Zone</label>
+                            <input type="text" class="form-control" name="depUtcZone" id="field_depUtcZone" formControlName="depUtcZone" placeholder="Europe/Paris"/>
+                            <div *ngIf="editForm.get('depUtcZone')!.invalid && (editForm.get('depUtcZone')!.dirty || editForm.get('depUtcZone')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('depUtcZone')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                            </div>
+                        </div>
+
+                        <h2 jhiTranslate="myTripApp.trip.arrival">Arrival</h2>
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.arrPlace" for="field_arrPlace">Arr Place</label>
+                            <input type="text" class="form-control" name="arrPlace" id="field_arrPlace" formControlName="arrPlace" placeholder="Search for airport"/>
+                            <div *ngIf="editForm.get('arrPlace')!.invalid && (editForm.get('arrPlace')!.dirty || editForm.get('arrPlace')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('arrPlace')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.arrDate" for="field_arrDate">Arr Date</label>
+                            <div class="d-flex">
+                                <input id="field_arrDate" type="datetime-local" class="form-control" name="arrDate" formControlName="arrDate" placeholder="YYYY-MM-DD HH:mm" />
+                            </div>
+                            <div *ngIf="editForm.get('arrDate')!.invalid && (editForm.get('arrDate')!.dirty || editForm.get('arrDate')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('arrDate')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                                <small class="form-text text-danger" [hidden]="!editForm.get('arrDate')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.arrTime" for="field_arrTime">Arr Time</label>
+                            <input type="number" class="form-control" name="arrTime" id="field_arrTime" formControlName="arrTime" />
+                            <div *ngIf="editForm.get('arrTime')!.invalid && (editForm.get('arrTime')!.dirty || editForm.get('arrTime')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('arrTime')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                                <small class="form-text text-danger" [hidden]="!editForm.get('arrTime')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.arrUtcZone" for="field_arrUtcZone">Arr Utc Zone</label>
+                            <input type="text" class="form-control" name="arrUtcZone" id="field_arrUtcZone" formControlName="arrUtcZone" placeholder="Europe/Paris"/>
+                            <div *ngIf="editForm.get('arrUtcZone')!.invalid && (editForm.get('arrUtcZone')!.dirty || editForm.get('arrUtcZone')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('arrUtcZone')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                            </div>
+                        </div>
+
+                        <h2 jhiTranslate="myTripApp.trip.details">Details</h2>
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.cabinCat" for="field_cabinCat">Cabin Cat</label>
+                            <input type="text" class="form-control" name="cabinCat" id="field_cabinCat" formControlName="cabinCat" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.marketingFlightId" for="field_marketingFlightId">Marketing Flight Id</label>
+                            <input type="text" class="form-control" name="marketingFlightId" id="field_marketingFlightId" formControlName="marketingFlightId" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.operatorFlightId" for="field_operatorFlightId">Operator Flight Id</label>
+                            <input type="text" class="form-control" name="operatorFlightId" id="field_operatorFlightId" formControlName="operatorFlightId" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.marketingAirline" for="field_marketingAirline">Marketing Airline</label>
+                            <input type="text" class="form-control" name="marketingAirline" id="field_marketingAirline" formControlName="marketingAirline" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.operatingAirline" for="field_operatingAirline">Operating Airline</label>
+                            <input type="text" class="form-control" name="operatingAirline" id="field_operatingAirline" formControlName="operatingAirline" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.transportation" for="field_transportation">Transportation</label>
+                            <input type="text" class="form-control" name="transportation" id="field_transportation" formControlName="transportation" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.bookingClass" for="field_bookingClass">Booking Class</label>
+                            <input type="text" class="form-control" name="bookingClass" id="field_bookingClass" formControlName="bookingClass" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="myTripApp.trip.cabinClass" for="field_cabinClass">Cabin Class</label>
+                            <input type="text" class="form-control" name="cabinClass" id="field_cabinClass" formControlName="cabinClass" />
+                            <div *ngIf="editForm.get('cabinClass')!.invalid && (editForm.get('cabinClass')!.dirty || editForm.get('cabinClass')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('cabinClass')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="resetForm()">
+                            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
+
+                        <button type="submit" id="save-entity" (click)="sidenav.toggle()" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                            <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </mat-sidenav>
+
+            <mat-sidenav-content>
+                <p>
+                    <div class="row">
+                        <button class="col-md-3" mat-raised-button color="primary" mat-button (click)="sidenav.toggle()">+</button>
+                        <h1 class="col-md-9">Your next trip</h1>
+                    </div>
+                </p>
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-subtitle>Send your booking confirmation email to me@getfeasy.com, so that we can make your trip freaking easy!</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="../../content/images/voyage.png" alt="trip">
+                    <mat-card-content>
+                        <div class="alert alert-warning" id="no-result" *ngIf="trips?.length === 0">
+                            <span jhiTranslate="myTripApp.trip.home.notFound">No trips found</span>
+                        </div>
+                        <div class="table-responsive" id="entities" *ngIf="trips?.length > 0">
+                            <table class="table table-striped" aria-describedby="page-heading">
+                                <thead>
+                                    <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending">
+                                        <th scope="col" jhiSortBy="depPlace"><span jhiTranslate="myTripApp.trip.departurePlace">Dep Place</span>
+                                        </th>
+                                        <th scope="col" jhiSortBy="depDate"><span jhiTranslate="myTripApp.trip.departureDate">Dep Date</span>
+                                        </th>
+                                        <th scope="col" jhiSortBy="arrPlace"><span jhiTranslate="myTripApp.trip.arrivalPlace">Arr Place</span>
+                                        </th>
+                                        <th scope="col" jhiSortBy="arrDate"><span jhiTranslate="myTripApp.trip.arrivalDate">Arr Date</span>
+                                        </th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                                    <tr *ngFor="let trip of trips">
+                                        <td>{{ trip.depPlace }}</td>
+                                        <td>{{ trip.depDate | date:'medium' }}</td>
+                                        <td>{{ trip.arrPlace }}</td>
+                                        <td>{{ trip.arrDate | date:'medium' }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
+</div>

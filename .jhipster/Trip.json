@@ -1,0 +1,117 @@
+{
+    "name": "Trip",
+    "fields": [
+        {
+            "fieldName": "depPlace",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "depDate",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "depTime",
+            "fieldType": "Duration",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "depUtcZone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "arrPlace",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "arrDate",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "arrTime",
+            "fieldType": "Duration",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "arrUtcZone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cabinCat",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "marketingFlightId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "operatorFlightId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "marketingAirline",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "operatingAirline",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "transportation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bookingClass",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cabinClass",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "trip",
+            "relationshipName": "user",
+            "otherEntityField": "login"
+        }
+    ],
+    "changelogDate": "20200317215200",
+    "javadoc": "The Trip entity.",
+    "entityTableName": "trip",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
