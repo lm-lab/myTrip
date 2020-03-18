@@ -1,6 +1,12 @@
 # myTripApp
 
 This application was generated using JHipster 6.8.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.8.0](https://www.jhipster.tech/documentation-archive/v6.8.0).
+You can:
+- Change the language depending on browser.
+- Create & Read (CR) a trip (MongoDb).
+- Sidenav close itself.
+- UI display all trips up to date.
+--> To add a trip, simply click on the "+" button at the top of the page and fill in the fields.
 
 ## Development
 
