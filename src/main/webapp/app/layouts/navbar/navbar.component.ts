@@ -35,10 +35,16 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setAppLanguage();
     this.profileService.getProfileInfo().subscribe(profileInfo => {
       this.inProduction = profileInfo.inProduction;
       this.swaggerEnabled = profileInfo.swaggerEnabled;
     });
+  }
+
+  setAppLanguage(): void{
+    const browserLanguage= navigator.language.substring(0,2); 
+    this.changeLanguage(browserLanguage);
   }
 
   changeLanguage(languageKey: string): void {
